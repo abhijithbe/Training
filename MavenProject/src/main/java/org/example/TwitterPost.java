@@ -1,13 +1,16 @@
 package org.example;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
-import java.util.Scanner;
-
-public class PostTweet {
+/**
+ * the class is used to post the tweet
+ * @author abhijith.be
+ */
+public class TwitterPost {
     /**
      * The postTweet function is used to post the tweet of the user
      * it authenticate the user using keys and posts the tweet using updateStatus command
@@ -17,21 +20,26 @@ public class PostTweet {
      * @param accessToken ->Access Key for authentication
      * @param accessSecretToken ->Access Secret Key for authentication
      */
-    public static void postTweet(String tweet,String apiKey,String apiSecretKey,String accessToken,String accessSecretToken){
-
+    public static void postTweet(String tweet,String apiKey,String apiSecretKey,String accessToken,String accessSecretToken)
+    {
+        Logger logger = LoggerFactory.getLogger(SimpleTwitterApp.class);
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
                     .setOAuthConsumerKey(apiKey)
                     .setOAuthConsumerSecret(apiSecretKey)
                     .setOAuthAccessToken(accessToken)
                     .setOAuthAccessTokenSecret(accessSecretToken);
-        TwitterFactory tf = new TwitterFactory(cb.build());
-        Twitter twitter = tf.getInstance();
-        try {
+        TwitterFactory twitterFactory = new TwitterFactory(cb.build());
+        Twitter twitter = twitterFactory.getInstance();
+        logger.info("Authenticated the User");
+        try
+        {
             twitter.updateStatus(tweet);
-            System.out.println("Successfully Tweeted");
-        }catch (Exception e){
-            System.out.println(e);
+            logger.info("Tweet Successful");
+        }
+        catch (TwitterException e)
+        {
+            logger.debug("Tweet Incomplete due to exception",e);
         }
 
     }
