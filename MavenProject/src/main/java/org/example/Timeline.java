@@ -8,21 +8,21 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 import java.util.List;
 /**
- * the class obtain the user hometimeline
+ * the class obtain the user home timeline
  * @author abhijith.be
  */
 public class Timeline {
     static  Logger logger = LoggerFactory.getLogger(Timeline.class);
     /**
      * the function prints all the home time line of the user
-     * @param statuses -> list of status of hometimeline
+     * @param statuses -> list of status of home timeline
      */
     public void printStatus(List<Status> statuses)
     {
         logger.info("Showing Timeline");
         for (Status status : statuses)
         {
-            logger.debug("Username",status.getUser().getName());
+            logger.info("Username",status.getUser().getName());
             logger.info(status.getText());
         }
         logger.info("Successfully Obtained Timeline");
@@ -46,7 +46,7 @@ public class Timeline {
                 .setOAuthAccessTokenSecret(accessSecretToken);
         TwitterFactory twitterFactory = new TwitterFactory(cb.build());
         Twitter twitter = twitterFactory.getInstance();
-        logger.info("Authenticated the User");
+        logger.debug("Authenticated the User");
         try
         {
             List<Status> statuses = twitter.getHomeTimeline();
@@ -56,7 +56,7 @@ public class Timeline {
         }
         catch(TwitterException e)
         {
-            logger.debug("Tweet Incomplete due to exception",e);
+            logger.error(e.getMessage(),e);
         }
 
     }

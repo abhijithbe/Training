@@ -30,7 +30,7 @@ public class TwitterPost {
                     .setOAuthAccessTokenSecret(accessSecretToken);
         TwitterFactory twitterFactory = new TwitterFactory(cb.build());
         Twitter twitter = twitterFactory.getInstance();
-        logger.info("Authenticated the User");
+        logger.debug("Authenticated the User");
         try
         {
             twitter.updateStatus(tweet);
@@ -38,7 +38,7 @@ public class TwitterPost {
         }
         catch (TwitterException e)
         {
-            logger.debug("Tweet Incomplete due to exception",e);
+            logger.error(e.getMessage(),e);
         }
 
     }

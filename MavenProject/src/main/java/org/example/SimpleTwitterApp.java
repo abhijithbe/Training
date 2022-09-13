@@ -102,7 +102,6 @@ public class SimpleTwitterApp {
                     logger.info("Timeline Called");
                     break;
                 default:
-                    System.out.println("Wrong Choice Entered");
                     logger.info("Nothing called because of wrong choice");
                     break;
             }
