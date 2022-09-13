@@ -12,18 +12,20 @@ import java.util.List;
  * @author abhijith.be
  */
 public class Timeline {
+    static  Logger logger = LoggerFactory.getLogger(Timeline.class);
     /**
      * the function prints all the home time line of the user
      * @param statuses -> list of status of hometimeline
      */
     public void printStatus(List<Status> statuses)
     {
-        System.out.println("Showing home timeline.");
+        logger.info("Showing Timeline");
         for (Status status : statuses)
         {
-            System.out.println(status.getUser().getName() + ":" + status.getText());
+            logger.debug("Username",status.getUser().getName());
+            logger.info(status.getText());
         }
-        System.out.println("Successfully Obtained Timeline");
+        logger.info("Successfully Obtained Timeline");
     }
     /**
      * The getTimeline function basically authenticates the user using keys
@@ -36,7 +38,6 @@ public class Timeline {
      */
     public static void getTimeline(String apiKey,String apiSecretKey,String accessToken,String accessSecretToken)
     {
-        Logger logger = LoggerFactory.getLogger(SimpleTwitterApp.class);
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
                 .setOAuthConsumerKey(apiKey)

@@ -60,7 +60,7 @@ public class SimpleTwitterApp {
      */
     public String getTweet()
     {
-        System.out.println("Enter the Tweet to Post");
+        logger.info("Enter the Tweet to Post");
         Scanner inputScanner = new Scanner(System.in);
         String tweet = inputScanner.next();
         return tweet;
@@ -77,10 +77,10 @@ public class SimpleTwitterApp {
         boolean flag = true;
         while(flag)
         {
-            System.out.println("Enter the Choice");
-            System.out.println("1.Post a Tweet");
-            System.out.println("2.Get Home TimeLines");
-            System.out.println("3.Exit");
+            logger.info("Enter the Choice");
+            logger.info("1.Post a Tweet");
+            logger.info("2.Get Home TimeLines");
+            logger.info("3.Exit");
             int choice = twitterObject.getChoice();
             logger.debug("Choice taken",choice);
             if(choice == 3)
