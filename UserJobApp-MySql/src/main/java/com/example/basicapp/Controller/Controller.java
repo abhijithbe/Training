@@ -1,5 +1,4 @@
 package com.example.basicapp.Controller;
-import com.example.basicapp.DaoServiceUser;
 import com.example.basicapp.JobDao.Job;
 import com.example.basicapp.JobDao.JobRepo;
 import com.example.basicapp.UserDao.UserRepo;
@@ -18,8 +17,6 @@ import java.util.Optional;
 public class Controller {
     @Autowired
     private MessageSource message;
-    @Autowired
-    private DaoServiceUser service;
     @Autowired
     private UserRepo repo;
     @Autowired
