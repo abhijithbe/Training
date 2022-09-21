@@ -1,0 +1,30 @@
+type Query {
+    # to the timeline
+    getTimeline:[timelineDetails]
+}
+type Mutation {
+    #to post the data
+    postTweet(msg:Inputmsgs): Inputmsg
+}
+#schema for timeline
+type timelineDetails {
+    id : ID
+    text :String
+    user : userinput
+}
+#schema for userinput
+type userinput {
+    id : ID
+    name : String
+    followersCount : Int
+}
+#input for message to be posted
+input Inputmsgs {
+    msg: String
+}
+#return type for post
+type Inputmsg {
+    msg: String
+}
+
+
