@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 /**
@@ -93,6 +94,7 @@ public class TimelineService {
                 .setOAuthAccessTokenSecret(accessSecretToken);
         TwitterFactory twitterFactory = new TwitterFactory(cb.build());
         Twitter twitter = twitterFactory.getInstance();
+        HashMap<String,String> map =new HashMap<>();
         try
         {
             List<Status> statuses = twitter.getHomeTimeline();

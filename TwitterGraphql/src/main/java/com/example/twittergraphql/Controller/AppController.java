@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import twitter4j.Status;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
 import java.util.List;
 /**
  * AppController is used to interact with Service layer and get the get and post results
@@ -42,7 +44,7 @@ public class AppController {
      */
     @MutationMapping("postTweet")
     public String postTweets(@Argument Inputmsgs msg) throws TwitterExceptions {
-        postObject.postStatus(msg.getMsg());
-        return "success";
+        String val=postObject.postStatus(msg.getMsg());
+        return val;
     }
 }

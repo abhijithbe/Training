@@ -4,13 +4,21 @@ type Query {
 }
 type Mutation {
     #to post the data
-    postTweet(msg:Inputmsgs): Inputmsg
+    postTweet(msg:Inputmsgs): Status
+}
+# to return the status
+enum Status {
+    SUCCESS
+    FAILURE
 }
 #schema for timeline
 type timelineDetails {
     id : ID
     text :String
     user : userinput
+}
+type statusPost {
+    status:Boolean
 }
 #schema for userinput
 type userinput {

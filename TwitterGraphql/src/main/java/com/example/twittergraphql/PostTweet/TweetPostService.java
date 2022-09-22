@@ -51,11 +51,12 @@ public class TweetPostService {
         {
             twitter.updateStatus(tweet);
             logger.info("Tweet Successful");
-            return "Success";
+            return "SUCCESS";
         }
         catch (TwitterException e)
         {
-            throw new TwitterExceptions("User Not Authenticated");
+            return "FAILURE";
+            //throw new TwitterExceptions("User Not Authenticated");
         }
 
     }
