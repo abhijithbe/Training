@@ -1,0 +1,38 @@
+type Query {
+    # to the timeline
+    getTimeline:[timelineDetails]
+}
+type Mutation {
+    #to post the data
+    postTweet(msg:Inputmsgs): Status
+}
+# to return the status
+enum Status {
+    SUCCESS
+    FAILURE
+}
+#schema for timeline
+type timelineDetails {
+    id : ID
+    text :String
+    user : userinput
+}
+type statusPost {
+    status:Boolean
+}
+#schema for userinput
+type userinput {
+    id : ID
+    name : String
+    followersCount : Int
+}
+#input for message to be posted
+input Inputmsgs {
+    msg: String
+}
+#return type for post
+type Inputmsg {
+    msg: String
+}
+
+
